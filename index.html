@@ -22,10 +22,34 @@
   >
     <h1 class="">News Portal</h1>
     <div class="" role="group" aria-label="News categories">
-      <button type="button" class="btn btn-secondary">US(All)</button>
-      <button type="button" class="btn btn-secondary">US(Business)</button>
-      <button type="button" class="btn btn-secondary">Cryptocurrency</button>
-      <button type="button" class="btn btn-secondary">Tech Crunch</button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        onclick="updateNews('us')"
+      >
+        US(All)
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        onclick="updateNews('business')"
+      >
+        US(Business)
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        onclick="updateNews('cryptocurrency')"
+      >
+        Cryptocurrency
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        onclick="updateNews('techcrunch')"
+      >
+        Tech Crunch
+      </button>
     </div>
 
     <div class="news w-100 p-5 d-flex flex-wrap"></div>
