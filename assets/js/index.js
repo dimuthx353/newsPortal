@@ -51,3 +51,5 @@ function updateNews(type) {
     });
   });
 }
+
+updateNews('us');
