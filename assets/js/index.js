@@ -1,25 +1,38 @@
 var url =
   'https://newsapi.org/v2/top-headlines?country=us&apiKey=72f827510e6a46cb8736388e22a252e0';
 
-var req = new Request(url);
+const newsEl = document.querySelector('.news');
 
-fetch(req).then(function (response) {
-  console.log(response);
-  const news = response.json();
-  console.log(news);
-});
+async function dataReq(url) {
+  try {
+    const res = await fetch(url);
+    const data = res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-const template = `
-       <div class="w-50 p-3 news-card border-2 border border-danger d-flex align-items-center">
-          <img src="image-url.jpg" alt="News Image" class="news-image" style="width: 50%; height: 100%" />
-          <div class="news-content ms-3 border border-black" style="width: 50%; height: 100%">
-              <h2 class="news-title">News Title</h2>
+dataReq(url).then((data) => {
+  const news = data.articles;
+  news.forEach((element) => {
+    if (element.title !== '[Removed]' && element.description !== null) {
+      const template = `
+       <div class=" p-3 news-card d-flex align-items-center shadow">
+          <img src="${element.urlToImage}" alt="News Image" class="news-image" />
+          <div class="news-content">
+              <h4 class="news-title">${element.title}</h2>
               <p class="news-description">
-                This is a short description of the news article...
+                ${element.description}
               </p>
-              <div class="news-meta">
-                  <span class="news-author">Author Name</span>
-                  <span class="news-date">Date</span>
+              <div class="news-meta text-black-50">
+                  <span class="news-author">${element.author}</span>
+                  <span class="news-date">${element.publishedAt}</span>
               </div>
           </div>
       </div>`;
+
+      newsEl.innerHTML += template;
+    }
+  });
+});

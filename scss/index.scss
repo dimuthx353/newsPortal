@@ -1,0 +1,19 @@
+.news {
+  > .news-card {
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+
+    img {
+      margin: 10px 30px;
+      object-fit: cover;
+      width: 400px;
+    }
+
+    div {
+      padding: 20px;
+    }
+  }
+}
